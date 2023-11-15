@@ -4,7 +4,7 @@
 
 ```properties
 ## For H2 Database
-spring.datasource.url=jdbc:h2:mem:qrmenu-server
+spring.datasource.url=jdbc:h2:mem:qrmenu-server-dev
 spring.datasource.driverClassName=org.h2.Driver
 spring.datasource.username=admin
 spring.datasource.password=admin
