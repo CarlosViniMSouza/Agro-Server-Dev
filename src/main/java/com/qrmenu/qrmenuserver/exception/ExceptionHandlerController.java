@@ -1,4 +1,4 @@
-package com.qrmenu.qrmenuserver.errors;
+package com.qrmenu.qrmenuserver.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

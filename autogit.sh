@@ -1,5 +1,5 @@
 git add -A
-git commit -m "add: H2 database | alt: README updated"
+git commit -m "alt: (POST) Login/Auth Consumer | err: https status 200 for everything"
 git push -u origin main
 git status
 

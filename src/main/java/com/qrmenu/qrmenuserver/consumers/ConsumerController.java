@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import com.qrmenu.qrmenuserver.utils.Utils;
@@ -44,10 +45,9 @@ public class ConsumerController {
 
     // For tomorrow: How to validade login?
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody ConsumerModel consumerModel) {
-        var consumer = this.consumerRepository.findByName(consumerModel.getName());
+    public ResponseEntity<ConsumerService> login(@Validated @RequestBody ConsumerModel consumerModel) {
 
-        return ResponseEntity.status(HttpStatus.OK).body(consumer);
+        return ResponseEntity.status(HttpStatus.OK).body(new ConsumerService("Consumer logged!"));
     }
 
     @PutMapping("/{id}")
