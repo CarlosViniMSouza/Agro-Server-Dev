@@ -1,5 +1,5 @@
 git add -A
-git commit -m "alt: (POST) Login/Auth Consumer | err: https status 200 for everything"
+git commit -m "del: ConsumerService.java"
 git push -u origin main
 git status
 

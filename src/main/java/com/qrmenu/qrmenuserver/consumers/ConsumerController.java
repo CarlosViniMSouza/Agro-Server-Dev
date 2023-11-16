@@ -45,9 +45,9 @@ public class ConsumerController {
 
     // For tomorrow: How to validade login?
     @PostMapping("/login")
-    public ResponseEntity<ConsumerService> login(@Validated @RequestBody ConsumerModel consumerModel) {
+    public ResponseEntity login(@Validated @RequestBody ConsumerModel consumerModel) {
 
-        return ResponseEntity.status(HttpStatus.OK).body(new ConsumerService("Consumer logged!"));
+        return ResponseEntity.status(HttpStatus.OK).body("Consumer logged!");
     }
 
     @PutMapping("/{id}")
