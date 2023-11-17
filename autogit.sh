@@ -1,5 +1,5 @@
 git add -A
-git commit -m "del: ConsumerService.java"
+git commit -m "err: (POST) Login/Auth Consumer"
 git push -u origin main
 git status
 
@@ -10,3 +10,5 @@ git status
 # 4. done: <any task/objective has been completed>
 # 5. fix: <something has been fixed>
 # 6. err: <something has gone wrong>
+
+# Error: Cannot invoke "com.qrmenu.qrmenuserver.consumers.ConsumerService.loginConsumer(com.qrmenu.qrmenuserver.consumers.ConsumerModel)" because "this.consumerService" is null] with root cause

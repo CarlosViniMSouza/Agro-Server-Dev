@@ -15,7 +15,7 @@ import java.util.UUID;
 @RequestMapping("/restaurants")
 public class RestaurantController {
     /*
-     * - [] Show all infos of a Restaurant
+     * - [x] Show all infos of a Restaurant
      * - [x] Register a new Restaurant
      * - [x] Update a Restaurant
      * - [x] Delete a Restaurant
