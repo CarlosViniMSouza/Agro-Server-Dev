@@ -1,7 +1,5 @@
 package com.qrmenu.qrmenuserver.consumers;
 
-import com.qrmenu.qrmenuserver.consumers.login.LoginRequest;
-import com.qrmenu.qrmenuserver.consumers.login.LoginResponse;
 import com.qrmenu.qrmenuserver.utils.Utils;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
@@ -27,8 +25,6 @@ public class ConsumerController {
     @Autowired
     private IConsumerRepository consumerRepository;
 
-    private ConsumerService consumerService;
-
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody ConsumerModel consumerModel) {
         var consumer = this.consumerRepository.findByName(consumerModel.getName());
@@ -46,24 +42,21 @@ public class ConsumerController {
     }
 
     @PostMapping("/login")
-    public LoginResponse login(@RequestBody LoginRequest loginRequest) {
-        ConsumerModel consumer = new ConsumerModel();
-        consumer.setName(loginRequest.getUsername());
-        consumer.setPassword(loginRequest.getPassword());
+    public ResponseEntity login(@RequestBody ConsumerModel consumerModel) {
+        var consumer = this.consumerRepository.findByName(consumerModel.getName());
 
-        boolean loginSuccess = consumerService.loginConsumer(consumer);
-
-        LoginResponse loginResponse = new LoginResponse();
-
-        if (loginSuccess) {
-            loginResponse.setSuccess(true);
-            loginResponse.setMessage("Login successful");
-        } else {
-            loginResponse.setSuccess(false);
-            loginResponse.setMessage("Invalid username or password");
+        if (consumer == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Consumer does not exist");
         }
 
-        return loginResponse;
+        var passwordVerify = BCrypt.verifyer().verify(consumerModel.getPassword().toCharArray(),
+                consumer.getPassword());
+
+        if (!passwordVerify.verified) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid name or password");
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(consumer);
     }
 
     @PutMapping("/{id}")
