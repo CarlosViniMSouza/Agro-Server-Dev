@@ -1,5 +1,5 @@
 git add -A
-git commit -m "done: (POST) Login/Auth Consumer working"
+git commit -m "alt: README updated"
 git push -u origin main
 git status
 

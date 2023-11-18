@@ -143,8 +143,27 @@ $ docker run -d --name qrmenu-database -p 5432:5432 -e POSTGRES_PASSWORD=admin p
 
 2. (POST) [http://localhost:8080/consumers/login]()
 
+* Quando os dados estão corretos: 
+
 ```json
-(EXPECTED) "Consumer logged"
+{
+    "id": "1e62359e-2010-4388-ac02-6a2676c3fd47",
+    "name": "UserTest02",
+    "email": "emailtest02@gmail.com",
+    "password": "$2a$12$Gq/5fQsbew5Oko3BBJjqde0Z0.WnuHwUjgtRl/p8jVH7y8nsl74sK"
+}
+```
+
+* Quando o nome ou a senha estão errados:
+
+```text
+"Invalid name or password"
+```
+
+* Quando o nome não está registrado no BD:
+
+```text
+"Consumer does not exist"
 ```
 
 3. (PUT) [http://localhost:8080/products/1e62359e-2010-4388-ac02-6a2676c3fd47]()
