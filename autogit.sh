@@ -1,5 +1,5 @@
 git add -A
-git commit -m "add: New Server to my Internship at Agro-IFAM"
+git commit -m "del: Optional import in NewsController.java"
 git branch -M main
 git remote add origin https://github.com/CarlosViniMSouza/Agro-Server-Dev.git
 git push -u origin main

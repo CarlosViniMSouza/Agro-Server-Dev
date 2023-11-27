@@ -6,7 +6,6 @@ import com.qrmenu.qrmenuserver.utils.Utils;
 import jakarta.servlet.http.HttpServletRequest;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
