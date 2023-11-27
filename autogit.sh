@@ -1,5 +1,7 @@
 git add -A
 git commit -m "add: New Server to my Internship at Agro-IFAM"
+git branch -M main
+git remote add origin https://github.com/CarlosViniMSouza/Agro-Server-Dev.git
 git push -u origin main
 git status
 
