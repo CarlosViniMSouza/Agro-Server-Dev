@@ -1,5 +1,5 @@
 git add -A
-git commit -m "alt: README updated"
+git commit -m "add: New Server to my Internship at Agro-IFAM"
 git push -u origin main
 git status
 

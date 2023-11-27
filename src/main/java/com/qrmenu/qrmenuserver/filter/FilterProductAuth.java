@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.qrmenu.qrmenuserver.restaurants.IRestaurantRepository;
+import com.qrmenu.qrmenuserver.users.IUserRepository;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import jakarta.servlet.FilterChain;
@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class FilterProductAuth extends OncePerRequestFilter {
 
     @Autowired
-    private IRestaurantRepository restaurantRepository;
+    private IUserRepository userRepository;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
@@ -27,7 +27,7 @@ public class FilterProductAuth extends OncePerRequestFilter {
             FilterChain filterChain) throws ServletException, IOException {
 
         var servletPath = request.getServletPath();
-        if (servletPath.startsWith("/products/")) {
+        if (servletPath.startsWith("/news/")) {
             var authorization = request.getHeader("Authorization");
             var authEncoded = authorization.substring("Basic".length()).trim();
 
@@ -36,23 +36,23 @@ public class FilterProductAuth extends OncePerRequestFilter {
             var authString = new String(authDecode);
 
             String[] credentials = authString.split(":");
-            String name = credentials[0];
+            String username = credentials[0];
             String password = credentials[1];
 
             System.out.println("Authorization");
-            System.out.println(name);
+            System.out.println(username);
             System.out.println(password);
 
-            var restaurant = this.restaurantRepository.findByName(name);
+            var user = this.userRepository.findByUsername(username);
 
-            if (restaurant == null) {
-                response.sendError(401, "Restaurant without Authorization");
+            if (user == null) {
+                response.sendError(401, "user without Authorization");
             } else {
                 // Validar senha
-                var passwordVerify = BCrypt.verifyer().verify(password.toCharArray(), restaurant.getPassword());
+                var passwordVerify = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
                 if (passwordVerify.verified) {
                     // Segue viagem
-                    request.setAttribute("idRestaurant", restaurant.getId());
+                    request.setAttribute("idUser", user.getId());
                     filterChain.doFilter(request, response);
                 } else {
                     response.sendError(401);
