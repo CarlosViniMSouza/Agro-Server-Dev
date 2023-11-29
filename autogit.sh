@@ -1,7 +1,5 @@
 git add -A
-git commit -m "del: Optional import in NewsController.java"
-git branch -M main
-git remote add origin https://github.com/CarlosViniMSouza/Agro-Server-Dev.git
+git commit -m "alt: User & News Controllers"
 git push -u origin main
 git status
 

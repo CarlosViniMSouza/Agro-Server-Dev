@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.qrmenu</groupId>
-	<artifactId>agro-server-dev</artifactId>
+	<artifactId>server-dev</artifactId>
 	<version>1.0.0</version>
-	<name>agro-server-dev</name>
-	<description>QRMenu Server Application</description>
+	<name>server-dev</name>
+	<description>Agro Server Application</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

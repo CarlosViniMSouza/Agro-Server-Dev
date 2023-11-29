@@ -24,8 +24,8 @@ public class UserController {
     @Autowired
     private IUserRepository userRepository;
 
-    @PostMapping("/")
-    public ResponseEntity<Object> insertUser(@RequestBody UserModel userModel) {
+    @PostMapping("/register")
+    public ResponseEntity<Object> registerUser(@RequestBody UserModel userModel) {
         var user = this.userRepository.findByUsername(userModel.getUsername());
 
         if (user != null) {
@@ -39,6 +39,24 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(userCreated);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<Object> authUser(@RequestBody UserModel userModel) {
+        var user = this.userRepository.findByUsername(userModel.getUsername());
+
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User does not exists!");
+        }
+
+        var passwordVerify = BCrypt.verifyer()
+                .verify(userModel.getPassword().toCharArray(), user.getPassword());
+
+        if (!passwordVerify.verified) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid name or password");
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(user);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> getUser(@PathVariable UUID id) {
         var user = this.userRepository.findById(id).orElse(null);
@@ -48,6 +66,17 @@ public class UserController {
         }
 
         return ResponseEntity.status(HttpStatus.OK).body(user);
+    }
+
+    @GetMapping("/{id}/news")
+    public ResponseEntity<Object> showNewsByUser(@PathVariable UUID id) {
+        var user = this.userRepository.findById(id).orElse(null);
+
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User dont exists!");
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(user.getNews());
     }
 
     @PutMapping("/{id}")

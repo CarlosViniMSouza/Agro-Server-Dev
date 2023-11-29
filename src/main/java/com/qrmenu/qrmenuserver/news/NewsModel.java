@@ -16,19 +16,19 @@ public class NewsModel {
     private UUID id;
 
     private UUID idUser;
-    
+
     @Column(length = 32, unique = true)
     private String title;
 
     @Column(length = 64)
     private String caption;
 
-    @Column(length = 128)
+    @Column(length = 256)
     private String paragraphInit;
 
     @Column(length = 256)
     private String paragraphMiddle;
 
-    @Column(length = 128)
+    @Column(length = 256)
     private String paragraphEnd;
 }
