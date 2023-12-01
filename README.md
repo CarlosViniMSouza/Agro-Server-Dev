@@ -91,16 +91,18 @@ $ docker run -d --name qrmenu-database -p 5432:5432 -e POSTGRES_PASSWORD=admin p
 
 | Verbo HTTP | URL | Descrição |
 |--|--|--|
-| POST | [http://localhost:8080/consumers/register]() | Cadastrar novo usuario |
-| POST | [http://localhost:8080/consumers/login]() | Autenticar um usuario |
-| PUT | [http://localhost:8080/consumers/{id}/]() | Alterar os dados do usuario |
-| DELETE | [http://localhost:8080/consumers/{id}/]() | Excluir um usuario |
+| POST | [http://localhost:8080/users/register]() | Cadastrar novo usuario |
+| POST | [http://localhost:8080/users/login]() | Autenticar um usuario |
+| GET | [http://localhost:8080/users/{id}/news]() | Visualizar noticias do usuario |
+| GET | [http://localhost:8080/users/{id}]() | Visualizar infos do usuario |
+| PUT | [http://localhost:8080/users/{id}/]() | Alterar os dados do usuario |
+| DEL | [http://localhost:8080/users/{id}/]() | Excluir um usuario |
 
 **Noticia**
 
-| Verbo HTTP | URL | Descrição |
+| Verbo HTTP | URL | Descrição | (TODAS Exige Nome & Senha)
 |--|--|--|
-| POST | [http://localhost:8080/products/]() | Cadastrar uma nova Noticia | (Exige Nome & Senha)
-| GET | [http://localhost:8080/products/]() | Visualizar Noticias do Usuario | (Exige Nome & Senha)
-| PUT | [http://localhost:8080/products/{id}/]() | Alterar uma Noticia | (Exige Nome & Senha)
-| DELETE | [http://localhost:8080/consumers/{id}/]() | Excluir uma Noticia | (Exige Nome & Senha)
+| POST | [http://localhost:8080/news/]() | Cadastrar uma nova Noticia |
+| GET | [http://localhost:8080/news/]() | Visualizar Noticias do Usuario |
+| PUT | [http://localhost:8080/news/{id}/]() | Alterar uma Noticia |
+| DEL | [http://localhost:8080/news/{id}/]() | Excluir uma Noticia |
