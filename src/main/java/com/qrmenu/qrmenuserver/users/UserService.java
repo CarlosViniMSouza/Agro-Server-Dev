@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.qrmenu.qrmenuserver.news.NewsModel;
 
+@SuppressWarnings("null")
 @Service
 public class UserService {
     @Autowired
