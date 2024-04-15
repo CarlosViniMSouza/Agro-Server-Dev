@@ -100,9 +100,11 @@ $ docker run -d --name qrmenu-database -p 5432:5432 -e POSTGRES_PASSWORD=admin p
 
 **Noticia**
 
-| Verbo HTTP | URL | Descrição | (TODAS Exige Nome & Senha)
+| Verbo HTTP | URL | Descrição |
 |--|--|--|
 | POST | [http://localhost:8080/news/]() | Cadastrar uma nova Noticia |
 | GET | [http://localhost:8080/news/]() | Visualizar Noticias do Usuario |
 | PUT | [http://localhost:8080/news/{id}/]() | Alterar uma Noticia |
 | DEL | [http://localhost:8080/news/{id}/]() | Excluir uma Noticia |
+
+(NOTA: TODAS Exige Nome & Senha)
